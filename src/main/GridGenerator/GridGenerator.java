@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class GridGenerator {
     private int gridWidth, gridHeight;
-    private int maxPassengerCount;
+    private int boatCapacity;
     private Coordinate boatInitPos;
 
     private List<Coordinate> stationsPositions, shipsPositions;
@@ -15,7 +15,7 @@ public class GridGenerator {
     public GridGenerator() {
         this.gridWidth = getRandomInt(5, 15);
         this.gridHeight = getRandomInt(5, 15);
-        this.maxPassengerCount = getRandomInt(1, 101);
+        this.boatCapacity = getRandomInt(30, 100);
 
         int boatX = getRandomInt(0, this.gridHeight);
         int boatY = getRandomInt(0, this.gridWidth);
@@ -39,7 +39,7 @@ public class GridGenerator {
             if (isPositionTaken(newShipPos))
                 continue;
             this.shipsPositions.add(newShipPos);
-            this.passengerCountInShips.add(getRandomInt(1, maxPassengerCount));
+            this.passengerCountInShips.add(getRandomInt(1, 100));
             shipsCount--;
         }
     }
@@ -80,17 +80,17 @@ public class GridGenerator {
         StringBuilder finalString = new StringBuilder();
 
         finalString.append(gridWidth).append(",").append(gridHeight).append(";");
-        finalString.append(maxPassengerCount).append(";");
+        finalString.append(boatCapacity).append(";");
         finalString.append(boatInitPos).append(";");
 
         boolean isFirst = true;
         for (Coordinate station : stationsPositions) {
             if (isFirst) {
-                finalString.append(station.toString());
                 isFirst = false;
             } else {
-                finalString.append(",").append(station.toString());
+                finalString.append(",");
             }
+            finalString.append(station.toString());
         }
 
         finalString.append(";");
@@ -98,11 +98,11 @@ public class GridGenerator {
         isFirst = true;
         for (int i = 0; i < shipsPositions.size(); i++) {
             if (isFirst) {
-                finalString.append(shipsPositions.get(i)).append(",").append(passengerCountInShips.get(i));
                 isFirst = false;
             } else {
-                finalString.append(",").append(shipsPositions.get(i)).append(",").append(passengerCountInShips.get(i));
+                finalString.append(",");
             }
+            finalString.append(shipsPositions.get(i)).append(",").append(passengerCountInShips.get(i));
         }
         finalString.append(";");
         return finalString.toString();
