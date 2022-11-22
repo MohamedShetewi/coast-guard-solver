@@ -1,6 +1,6 @@
 package main.Main;
 
-import main.GridGenerator.GridGenerator;
+import main.Problem.GridGenerator;
 
 public class Main {
     public static String GenGrid() {

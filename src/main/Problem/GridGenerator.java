@@ -1,4 +1,4 @@
-package main.GridGenerator;
+package main.Problem;
 
 import main.Entity.Location;
 

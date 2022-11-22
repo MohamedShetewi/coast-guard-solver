@@ -9,4 +9,16 @@ public class CoastGuardBoat {
         this.location = location;
         this.maxPassengersCapacity = maxPassengersCapacity;
     }
+
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public int getMaxPassengersCapacity() {
+        return maxPassengersCapacity;
+    }
 }

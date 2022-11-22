@@ -5,6 +5,20 @@ public class Ship {
     private int passengersCount;
     private int blackBoxHealth;
 
+    public Ship(Location location, int passengersCount) {
+        this.location = location;
+        this.passengersCount = passengersCount;
+        this.blackBoxHealth = 1;
+    }
+
+    public boolean isWreck() {
+        return passengersCount == 0;
+    }
+
+    public boolean isBlackBoxDamaged() {
+        return blackBoxHealth >= 20;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -15,18 +29,5 @@ public class Ship {
 
     public int getBlackBoxHealth() {
         return blackBoxHealth;
-    }
-
-    public boolean isWrecked() {
-        return isWrecked;
-    }
-
-    private boolean isWrecked;
-
-    public Ship(Location location, int passengersCount) {
-        this.location = location;
-        this.passengersCount = passengersCount;
-        this.blackBoxHealth = 1;
-        this.isWrecked = false;
     }
 }
