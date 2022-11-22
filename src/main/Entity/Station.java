@@ -9,6 +9,11 @@ public class Station {
         this.location = location;
         this.passengersCount = 0;
     }
+
+    public Station(Location location, int passengersCount) {
+        this.location = location;
+        this.passengersCount = passengersCount;
+    }
     public Location getLocation() {
         return location;
     }

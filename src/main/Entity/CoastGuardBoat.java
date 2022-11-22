@@ -10,6 +10,12 @@ public class CoastGuardBoat {
         this.maxPassengersCapacity = maxPassengersCapacity;
     }
 
+    public CoastGuardBoat(Location location, int maxPassengersCapacity, int currentCapacity) {
+        this.location = location;
+        this.currentCapacity = currentCapacity;
+        this.maxPassengersCapacity = maxPassengersCapacity;
+    }
+
     public int getCurrentCapacity() {
         return currentCapacity;
     }
