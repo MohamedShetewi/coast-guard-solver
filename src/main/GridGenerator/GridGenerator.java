@@ -1,5 +1,7 @@
 package main.GridGenerator;
 
+import main.Entity.Location;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,9 +9,9 @@ import java.util.Random;
 public class GridGenerator {
     private int gridWidth, gridHeight;
     private int boatCapacity;
-    private Coordinate boatInitPos;
+    private Location boatInitPos;
 
-    private List<Coordinate> stationsPositions, shipsPositions;
+    private List<Location> stationsPositions, shipsPositions;
     private List<Integer> passengerCountInShips;
 
     public GridGenerator() {
@@ -19,7 +21,7 @@ public class GridGenerator {
 
         int boatX = getRandomInt(0, this.gridHeight);
         int boatY = getRandomInt(0, this.gridWidth);
-        this.boatInitPos = new Coordinate(boatX, boatY);
+        this.boatInitPos = new Location(boatX, boatY);
 
         shipsPositions = new ArrayList<>();
         stationsPositions = new ArrayList<>();
@@ -35,7 +37,7 @@ public class GridGenerator {
         int shipsCount = getRandomInt(1, maxShipsCount);
 
         while (shipsCount > 0) {
-            Coordinate newShipPos = new Coordinate(getRandomInt(0, this.gridHeight), getRandomInt(0, this.gridWidth));
+            Location newShipPos = new Location(getRandomInt(0, this.gridHeight), getRandomInt(0, this.gridWidth));
             if (isPositionTaken(newShipPos))
                 continue;
             this.shipsPositions.add(newShipPos);
@@ -50,7 +52,7 @@ public class GridGenerator {
         int stationsCount = getRandomInt(1, maxStationsCount);
 
         while (stationsCount > 0) {
-            Coordinate newStationPos = new Coordinate(getRandomInt(0, this.gridHeight), getRandomInt(0, this.gridWidth));
+            Location newStationPos = new Location(getRandomInt(0, this.gridHeight), getRandomInt(0, this.gridWidth));
 
             if (isPositionTaken(newStationPos))
                 continue;
@@ -60,13 +62,13 @@ public class GridGenerator {
     }
 
 
-    private boolean isPositionTaken(Coordinate newPosition) {
+    private boolean isPositionTaken(Location newPosition) {
         if (newPosition.equals(boatInitPos))
             return true;
-        for (Coordinate shipPosition : shipsPositions)
+        for (Location shipPosition : shipsPositions)
             if (newPosition.equals(shipPosition))
                 return true;
-        for (Coordinate stationPosition : stationsPositions)
+        for (Location stationPosition : stationsPositions)
             if (newPosition.equals(stationPosition))
                 return true;
         return false;
@@ -84,7 +86,7 @@ public class GridGenerator {
         finalString.append(boatInitPos).append(";");
 
         boolean isFirst = true;
-        for (Coordinate station : stationsPositions) {
+        for (Location station : stationsPositions) {
             if (isFirst) {
                 isFirst = false;
             } else {
