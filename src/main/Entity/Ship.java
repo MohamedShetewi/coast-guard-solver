@@ -10,6 +10,11 @@ public class Ship {
         this.passengersCount = passengersCount;
         this.blackBoxHealth = 1;
     }
+    public Ship(Location location, int passengersCount, int blackBoxHealth) {
+        this.location = location;
+        this.passengersCount = passengersCount;
+        this.blackBoxHealth = blackBoxHealth;
+    }
 
     public boolean isWreck() {
         return passengersCount == 0;
