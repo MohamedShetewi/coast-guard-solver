@@ -3,25 +3,29 @@ package main.Entity;
 public class Ship {
     private Location location;
     private int passengersCount;
-    private int blackBoxHealth;
+    private int blackBoxDamage;
+    private boolean isBlackBoxRetrieved;
 
     public Ship(Location location, int passengersCount) {
         this.location = location;
         this.passengersCount = passengersCount;
-        this.blackBoxHealth = 1;
+        this.blackBoxDamage = 1;
+        this.isBlackBoxRetrieved = false;
     }
-    public Ship(Location location, int passengersCount, int blackBoxHealth) {
+
+    public Ship(Location location, int passengersCount, int blackBoxDamage, boolean isBlackBoxRetrieved) {
         this.location = location;
         this.passengersCount = passengersCount;
-        this.blackBoxHealth = blackBoxHealth;
+        this.blackBoxDamage = blackBoxDamage;
+        this.isBlackBoxRetrieved = isBlackBoxRetrieved;
     }
 
     public boolean isWreck() {
         return passengersCount == 0;
     }
 
-    public boolean isBlackBoxDamaged() {
-        return blackBoxHealth >= 20;
+    public boolean isBlackBoxRetrievable() {
+        return isWreck() && !isBlackBoxRetrieved && blackBoxDamage < 20;
     }
 
     public Location getLocation() {
@@ -32,7 +36,11 @@ public class Ship {
         return passengersCount;
     }
 
-    public int getBlackBoxHealth() {
-        return blackBoxHealth;
+    public int getBlackBoxDamage() {
+        return blackBoxDamage;
+    }
+
+    public boolean isBlackBoxRetrieved() {
+        return isBlackBoxRetrieved;
     }
 }

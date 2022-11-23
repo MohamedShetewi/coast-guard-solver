@@ -4,8 +4,9 @@ import main.Entity.Ship;
 
 public class CoastGuardProblem extends Problem {
 
-    private CoastGuardState initialState;
-    private Operator[] operators;
+    public CoastGuardProblem(CoastGuardState initialState, Operator[] operators) {
+        super(initialState, operators);
+    }
 
     public static String genGrid() {
         return (new GridGenerator()).toString();
@@ -20,7 +21,7 @@ public class CoastGuardProblem extends Problem {
         if (state.getCoastGuardBoat().getCurrentCapacity() > 0)
             return false;
         for (Ship ship : state.getShipList())
-            if (!ship.isWreck() || !ship.isBlackBoxDamaged())
+            if (ship.isBlackBoxRetrievable())
                 return false;
         return true;
     }
@@ -31,6 +32,6 @@ public class CoastGuardProblem extends Problem {
     }
 
     public CoastGuardState getInitialState() {
-        return initialState;
+        return (CoastGuardState) initialState;
     }
 }
