@@ -13,7 +13,7 @@ public class CoastGuardProblem extends Problem {
     }
 
     // TODO
-    public static String solver(String grid, String strategy, boolean visualize) {
+    public static String solve(String grid, String strategy, boolean visualize) {
         return "";
     }
 
