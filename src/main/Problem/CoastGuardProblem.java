@@ -17,17 +17,18 @@ public class CoastGuardProblem extends Problem {
         return "";
     }
 
-    public static boolean isGoalState(CoastGuardState state) {
-        if (state.getCoastGuardBoat().getCurrentCapacity() > 0)
+    public boolean isGoalState(State state) {
+        CoastGuardState coastGuardState = (CoastGuardState) state;
+        if (coastGuardState.getCoastGuardBoat().getCurrentCapacity() > 0)
             return false;
-        for (Ship ship : state.getShipList())
+        for (Ship ship : coastGuardState.getShipList())
             if (!ship.isWreck() || ship.isBlackBoxRetrievable())
                 return false;
         return true;
     }
 
     // TODO
-    public static int pathCost(CoastGuardState state) {
+    public int pathCost(State state) {
         return 0;
     }
 
