@@ -5,6 +5,7 @@ import main.Entity.Ship;
 import main.Entity.Station;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CoastGuardState implements State {
 
@@ -40,5 +41,18 @@ public class CoastGuardState implements State {
 
     public CoastGuardBoat getCoastGuardBoat() {
         return coastGuardBoat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoastGuardState that = (CoastGuardState) o;
+        return savedPassengersCount == that.savedPassengersCount && passengersDeathCount == that.passengersDeathCount && shipList.equals(that.shipList) && stationList.equals(that.stationList) && coastGuardBoat.equals(that.coastGuardBoat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shipList, stationList, coastGuardBoat, savedPassengersCount, passengersDeathCount);
     }
 }
