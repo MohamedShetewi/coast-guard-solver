@@ -21,7 +21,7 @@ public class CoastGuardProblem extends Problem {
         if (state.getCoastGuardBoat().getCurrentCapacity() > 0)
             return false;
         for (Ship ship : state.getShipList())
-            if (ship.isBlackBoxRetrievable())
+            if (!ship.isWreck() || ship.isBlackBoxRetrievable())
                 return false;
         return true;
     }
