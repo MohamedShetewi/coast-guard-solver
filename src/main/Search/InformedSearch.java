@@ -9,7 +9,6 @@ import java.util.PriorityQueue;
 public abstract class InformedSearch extends Search{
     static class InformedSearchQueue implements SearchQueue<Node> {
         PriorityQueue<Node> priorityQueue;
-
         InformedSearchQueue(Comparator<Node> c) {
             priorityQueue = new PriorityQueue<>(c);
         }
@@ -35,6 +34,8 @@ public abstract class InformedSearch extends Search{
         }
     }
 
-    public abstract int heuristic1(State s);
-    public abstract int heuristic2(State s);
+    Heuristic[] heuristics;
+
+//    public abstract int heuristic1(State s);
+//    public abstract int heuristic2(State s);
 }
