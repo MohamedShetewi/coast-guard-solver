@@ -24,16 +24,16 @@ public class Move extends Operator {
         int yLocation = coastGuardBoat.getLocation().getY();
 
         switch (direction) {
-            case up:
+            case UP:
                 coastGuardBoat.setLocation(new Location(xLocation - 1, yLocation));
                 break;
-            case down:
+            case DOWN:
                 coastGuardBoat.setLocation(new Location(xLocation + 1, yLocation));
                 break;
-            case left:
+            case LEFT:
                 coastGuardBoat.setLocation(new Location(xLocation, yLocation - 1));
                 break;
-            case right:
+            case RIGHT:
                 coastGuardBoat.setLocation(new Location(xLocation, yLocation + 1));
                 break;
             default:
@@ -54,13 +54,13 @@ public class Move extends Operator {
         int yLocation = coastGuardBoat.getLocation().getY();
 
         switch (direction) {
-            case up:
+            case UP:
                 return xLocation - 1 >= 0;
-            case down:
+            case DOWN:
                 return xLocation + 1 < gridHeight;
-            case left:
+            case LEFT:
                 return yLocation - 1 >= 0;
-            case right:
+            case RIGHT:
                 return yLocation + 1 < gridWidth;
             default:
                 return true;
