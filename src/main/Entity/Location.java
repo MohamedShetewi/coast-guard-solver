@@ -1,5 +1,7 @@
 package main.Entity;
 
+import java.util.Objects;
+
 public class Location {
     private int x, y;
 
@@ -31,5 +33,10 @@ public class Location {
 
     public String toString() {
         return this.x + "," + this.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

@@ -1,5 +1,7 @@
 package main.Entity;
 
+import java.util.Objects;
+
 public class CoastGuardBoat {
     private Location location;
     private int maxPassengersCapacity;
@@ -30,6 +32,18 @@ public class CoastGuardBoat {
 
     public void setLocation(Location location) {
         this.location = location;
+        
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoastGuardBoat that = (CoastGuardBoat) o;
+        return maxPassengersCapacity == that.maxPassengersCapacity && currentCapacity == that.currentCapacity && location.equals(that.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, maxPassengersCapacity, currentCapacity);
     }
 
     public int getMaxPassengersCapacity() {
