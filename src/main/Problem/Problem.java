@@ -1,5 +1,16 @@
 package main.Problem;
 
 public abstract class Problem {
-    // TODO This should include some problem specification
+
+    public State initialState;
+    public Operator[] operators;
+
+    public Problem(State initialState, Operator[] operators) {
+        this.initialState = initialState;
+        this.operators = operators;
+    }
+
+    public Operator[] getOperators() {
+        return operators;
+    }
 }

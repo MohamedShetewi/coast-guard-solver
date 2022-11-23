@@ -4,14 +4,14 @@ public class Node {
 
     private State state;
     private Node parentNode;
-    private Operator operatorFromParent; // TODO Can you think of a better naming?
+    private Operator generatingOperator; // the operator that led to this Node;
     private int depth;
     private int pathCostFromRoot;
 
-    public Node(State state, Node parentNode, Operator operatorFromParent, int depth, int pathCostFromRoot) {
+    public Node(State state, Node parentNode, Operator generatingOperator, int depth, int pathCostFromRoot) {
         this.state = state;
         this.parentNode = parentNode;
-        this.operatorFromParent = operatorFromParent;
+        this.generatingOperator = generatingOperator;
         this.depth = depth;
         this.pathCostFromRoot = pathCostFromRoot;
     }
@@ -24,8 +24,8 @@ public class Node {
         return parentNode;
     }
 
-    public Operator getOperatorFromParent() {
-        return operatorFromParent;
+    public Operator getGeneratingOperator() {
+        return generatingOperator;
     }
 
     public int getDepth() {
