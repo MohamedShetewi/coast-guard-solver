@@ -66,13 +66,15 @@ public class CoastGuardState implements State {
         ArrayList<Station> newStationList = new ArrayList<>();
         CoastGuardBoat newCoastGuardBoat = (CoastGuardBoat) this.coastGuardBoat.clone();
 
-        for (Ship ship: this.shipList)
-            newShipList.add((Ship)ship.clone());
+        for (Ship ship : this.shipList)
+            newShipList.add((Ship) ship.clone());
 
-        for(Station station: this.stationList)
-            newStationList.add((Station)station.clone());
+        for (Station station : this.stationList)
+            newStationList.add((Station) station.clone());
 
         return new CoastGuardState(newShipList, newStationList, newCoastGuardBoat, this.savedPassengersCount, this.passengersDeathCount);
+    }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

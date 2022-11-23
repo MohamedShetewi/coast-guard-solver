@@ -16,6 +16,7 @@ public class Station {
         this.location = location;
         this.passengersCount = passengersCount;
     }
+
     public Location getLocation() {
         return location;
     }
@@ -30,7 +31,9 @@ public class Station {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return new Station((Location)this.location.clone(), this.passengersCount);
+        return new Station((Location) this.location.clone(), this.passengersCount);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

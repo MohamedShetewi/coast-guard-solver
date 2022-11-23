@@ -61,7 +61,9 @@ public class Ship {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return new Ship((Location)this.location.clone(), this.passengersCount, this.blackBoxDamage, this.isBlackBoxRetrieved);
+        return new Ship((Location) this.location.clone(), this.passengersCount, this.blackBoxDamage, this.isBlackBoxRetrieved);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

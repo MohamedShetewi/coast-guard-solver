@@ -32,7 +32,8 @@ public class CoastGuardBoat {
 
     public void setLocation(Location location) {
         this.location = location;
-        
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
