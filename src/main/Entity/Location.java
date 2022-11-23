@@ -16,6 +16,18 @@ public class Location {
         return x == that.x && y == that.y;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Location(this.x, this.y);
+    }
 
     public String toString() {
         return this.x + "," + this.y;

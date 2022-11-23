@@ -20,11 +20,24 @@ public class CoastGuardBoat {
         return currentCapacity;
     }
 
+    public void setCurrentCapacity(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
+    }
+
     public Location getLocation() {
         return location;
     }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public int getMaxPassengersCapacity() {
         return maxPassengersCapacity;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new CoastGuardBoat((Location) this.location.clone(), this.maxPassengersCapacity, this.currentCapacity);
     }
 }

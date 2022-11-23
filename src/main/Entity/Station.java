@@ -21,4 +21,13 @@ public class Station {
     public int getPassengersCount() {
         return passengersCount;
     }
+
+    public void setPassengersCount(int passengersCount) {
+        this.passengersCount = passengersCount;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Station((Location)this.location.clone(), this.passengersCount);
+    }
 }

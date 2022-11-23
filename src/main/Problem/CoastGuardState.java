@@ -30,6 +30,23 @@ public class CoastGuardState implements State {
         this.passengersDeathCount = passengersDeathCount;
     }
 
+    public int getSavedPassengersCount() {
+        return savedPassengersCount;
+    }
+
+    public int getPassengersDeathCount() {
+        return passengersDeathCount;
+    }
+
+    public void setSavedPassengersCount(int savedPassengersCount) {
+        this.savedPassengersCount = savedPassengersCount;
+    }
+
+    public void setPassengersDeathCount(int passengersDeathCount) {
+        this.passengersDeathCount = passengersDeathCount;
+    }
+
+
     public ArrayList<Ship> getShipList() {
         return shipList;
     }
@@ -40,5 +57,20 @@ public class CoastGuardState implements State {
 
     public CoastGuardBoat getCoastGuardBoat() {
         return coastGuardBoat;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        ArrayList<Ship> newShipList = new ArrayList<>();
+        ArrayList<Station> newStationList = new ArrayList<>();
+        CoastGuardBoat newCoastGuardBoat = (CoastGuardBoat) this.coastGuardBoat.clone();
+
+        for (Ship ship: this.shipList)
+            newShipList.add((Ship)ship.clone());
+
+        for(Station station: this.stationList)
+            newStationList.add((Station)station.clone());
+
+        return new CoastGuardState(newShipList, newStationList, newCoastGuardBoat, this.savedPassengersCount, this.passengersDeathCount);
     }
 }
