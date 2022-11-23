@@ -1,5 +1,7 @@
 package main.Entity;
 
+import java.util.Objects;
+
 public class Station {
 
     private Location location;
@@ -29,5 +31,16 @@ public class Station {
     @Override
     public Object clone() throws CloneNotSupportedException {
         return new Station((Location)this.location.clone(), this.passengersCount);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Station station = (Station) o;
+        return passengersCount == station.passengersCount && location.equals(station.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, passengersCount);
     }
 }
