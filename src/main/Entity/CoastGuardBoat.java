@@ -33,6 +33,9 @@ public class CoastGuardBoat {
     public void setLocation(Location location) {
         this.location = location;
     }
+    public boolean hasCapacity() {
+        return maxPassengersCapacity > currentCapacity;
+    }
 
     @Override
     public boolean equals(Object o) {
