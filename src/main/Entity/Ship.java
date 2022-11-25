@@ -46,6 +46,24 @@ public class Ship {
         return isBlackBoxRetrieved;
     }
 
+
+    public void setPassengersCount(int passengersCount) {
+        this.passengersCount = passengersCount;
+    }
+
+    public void setBlackBoxDamage(int blackBoxDamage) {
+        this.blackBoxDamage = blackBoxDamage;
+    }
+
+    public void setBlackBoxRetrieved(boolean blackBoxRetrieved) {
+        isBlackBoxRetrieved = blackBoxRetrieved;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Ship((Location) this.location.clone(), this.passengersCount, this.blackBoxDamage, this.isBlackBoxRetrieved);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

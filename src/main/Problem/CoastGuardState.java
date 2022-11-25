@@ -14,6 +14,8 @@ public class CoastGuardState implements State {
     private CoastGuardBoat coastGuardBoat;
     private int savedPassengersCount;
     private int passengersDeathCount;
+    private int gridWidth;
+    private int gridHeight;
 
     public CoastGuardState(ArrayList<Ship> shipList, ArrayList<Station> stationList, CoastGuardBoat coastGuardBoat) {
         this.shipList = shipList;
@@ -31,6 +33,26 @@ public class CoastGuardState implements State {
         this.passengersDeathCount = passengersDeathCount;
     }
 
+    public int getSavedPassengersCount() {
+        return savedPassengersCount;
+    }
+
+    public int getPassengersDeathCount() {
+        return passengersDeathCount;
+    }
+
+    public void setSavedPassengersCount(int savedPassengersCount) {
+        this.savedPassengersCount = savedPassengersCount;
+    }
+
+    public int getGridWidth() {
+        return gridWidth;
+    }
+
+    public int getGridHeight() {
+        return gridHeight;
+    }
+
     public ArrayList<Ship> getShipList() {
         return shipList;
     }
@@ -43,7 +65,38 @@ public class CoastGuardState implements State {
         return coastGuardBoat;
     }
 
+    public void updateDeathInState(){
+        ArrayList<Ship> shipList = this.getShipList();
+        int deathCount = 0;
+
+        //updates the number of passengers on all ships after performing an action
+        for (Ship ship : shipList) {
+            if (!ship.isWreck()) {
+                ship.setPassengersCount(ship.getPassengersCount() - 1);
+                deathCount++;
+            } else if (ship.isBlackBoxRetrievable())
+                ship.setBlackBoxDamage(ship.getBlackBoxDamage() + 1);
+        }
+
+        //updates the count of deaths until this state
+        this.passengersDeathCount += deathCount;
+    }
+
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        ArrayList<Ship> newShipList = new ArrayList<>();
+        ArrayList<Station> newStationList = new ArrayList<>();
+        CoastGuardBoat newCoastGuardBoat = (CoastGuardBoat) this.coastGuardBoat.clone();
+
+        for (Ship ship : this.shipList)
+            newShipList.add((Ship) ship.clone());
+
+        for (Station station : this.stationList)
+            newStationList.add((Station) station.clone());
+
+        return new CoastGuardState(newShipList, newStationList, newCoastGuardBoat, this.savedPassengersCount, this.passengersDeathCount);
+    }
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
