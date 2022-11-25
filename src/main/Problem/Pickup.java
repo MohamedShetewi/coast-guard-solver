@@ -23,8 +23,7 @@ public class Pickup extends Operator {
                 ship.setPassengersCount(ship.getPassengersCount() - mostPossibleCount);
                 newCoastGuardBoat.setCurrentCapacity(newCoastGuardBoat.getCurrentCapacity() + mostPossibleCount);
                 newState.setSavedPassengersCount(newState.getSavedPassengersCount() + mostPossibleCount);
-                int deathCount = updateShips(newState);
-                newState.setPassengersDeathCount(newState.getPassengersDeathCount() + deathCount);
+                newState.updateDeathInState();
                 break;
             }
         }
@@ -42,7 +41,7 @@ public class Pickup extends Operator {
         ArrayList<Ship> shipList = oldState.getShipList();
 
         for (Ship ship : shipList)
-            if (ship.getLocation().equals(coastGuardBoat.getLocation()) && !ship.isWreck())
+            if (ship.getLocation().equals(coastGuardBoat.getLocation()) && !ship.isWreck() && coastGuardBoat.hasCapacity())
                 return true;
 
         return false;

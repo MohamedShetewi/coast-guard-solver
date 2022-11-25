@@ -5,13 +5,9 @@ import main.Entity.Location;
 
 public class Move extends Operator {
     Direction direction;
-    int gridWidth;
-    int gridHeight;
 
-    public Move(Direction direction, int gridWidth, int gridHeight) {
+    public Move(Direction direction) {
         this.direction = direction;
-        this.gridWidth = gridWidth;
-        this.gridHeight = gridHeight;
     }
 
     @Override
@@ -39,8 +35,8 @@ public class Move extends Operator {
             default:
                 break;
         }
-        int deathCount = updateShips(newState);
-        newState.setPassengersDeathCount(newState.getPassengersDeathCount() + deathCount);
+
+        newState.updateDeathInState();
 
         return newState;
     }
@@ -49,6 +45,9 @@ public class Move extends Operator {
     public boolean isValidOperation(State state) {
         CoastGuardState oldState = (CoastGuardState) state;
         CoastGuardBoat coastGuardBoat = oldState.getCoastGuardBoat();
+
+        int gridHeight = oldState.getGridHeight();
+        int gridWidth = oldState.getGridWidth();
 
         int xLocation = coastGuardBoat.getLocation().getX();
         int yLocation = coastGuardBoat.getLocation().getY();

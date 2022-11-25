@@ -19,8 +19,7 @@ public class Retrieve extends Operator{
                 break;
             }
 
-        int deathCount = updateShips(newState);
-        newState.setPassengersDeathCount(newState.getPassengersDeathCount() + deathCount);
+        newState.updateDeathInState();
 
         return newState;
     }
