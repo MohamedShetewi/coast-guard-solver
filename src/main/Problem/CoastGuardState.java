@@ -17,16 +17,21 @@ public class CoastGuardState implements State {
     private int gridWidth;
     private int gridHeight;
 
-    public CoastGuardState(ArrayList<Ship> shipList, ArrayList<Station> stationList, CoastGuardBoat coastGuardBoat, int gridWidth, int gridHeight) {
+    public CoastGuardState(ArrayList<Ship> shipList, ArrayList<Station> stationList, CoastGuardBoat coastGuardBoat) {
         this.shipList = shipList;
         this.stationList = stationList;
         this.coastGuardBoat = coastGuardBoat;
-        this.gridWidth = gridWidth;
-        this.gridHeight = gridHeight;
         this.savedPassengersCount = 0;
         this.passengersDeathCount = 0;
     }
 
+    public CoastGuardState(ArrayList<Ship> shipList, ArrayList<Station> stationList, CoastGuardBoat coastGuardBoat, int savedPassengersCount, int passengersDeathCount) {
+        this.shipList = shipList;
+        this.stationList = stationList;
+        this.coastGuardBoat = coastGuardBoat;
+        this.savedPassengersCount = savedPassengersCount;
+        this.passengersDeathCount = passengersDeathCount;
+    }
 
     public int getSavedPassengersCount() {
         return savedPassengersCount;
