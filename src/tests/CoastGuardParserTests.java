@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 import code.Entity.Location;
 import code.Problem.CoastGuardParser;

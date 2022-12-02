@@ -2,9 +2,9 @@ package code.Problem;
 
 import code.Entity.Ship;
 
-public class CoastGuardProblem extends Problem {
+public class CoastGuard extends Problem {
 
-    public CoastGuardProblem(CoastGuardState initialState, Operator[] operators) {
+    public CoastGuard(CoastGuardState initialState, Operator[] operators) {
         super(initialState, operators);
     }
 
