@@ -82,7 +82,7 @@ public class CoastGuardState implements State {
 
         //updates the count of deaths until this state
         this.passengersDeathCount += deathCount;
-        this.damagedBoxesCount += damagedCount;
+        this.damagedBoxesCount = damagedCount;
     }
 
     @Override
