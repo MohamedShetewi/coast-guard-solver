@@ -36,7 +36,7 @@ public class Move extends Operator {
                 break;
         }
 
-        newState.updateDeathInState();
+        newState.updateDeathAndDamageInState();
 
         return newState;
     }

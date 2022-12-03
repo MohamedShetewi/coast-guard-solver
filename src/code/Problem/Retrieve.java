@@ -19,7 +19,7 @@ public class Retrieve extends Operator{
                 break;
             }
 
-        newState.updateDeathInState();
+        newState.updateDeathAndDamageInState();
 
         return newState;
     }
