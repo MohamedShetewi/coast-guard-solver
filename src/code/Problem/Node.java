@@ -8,9 +8,9 @@ public class Node {
     private Node parentNode;
     private Operator generatingOperator; // the operator that led to this Node;
     private int depth;
-    private int pathCostFromRoot;
+    private double pathCostFromRoot;
 
-    public Node(State state, Node parentNode, Operator generatingOperator, int depth, int pathCostFromRoot) {
+    public Node(State state, Node parentNode, Operator generatingOperator, int depth, double pathCostFromRoot) {
         this.state = state;
         this.parentNode = parentNode;
         this.generatingOperator = generatingOperator;
@@ -34,7 +34,7 @@ public class Node {
         return depth;
     }
 
-    public int getPathCostFromRoot() {
+    public double getPathCostFromRoot() {
         return pathCostFromRoot;
     }
 

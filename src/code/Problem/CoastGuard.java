@@ -28,8 +28,11 @@ public class CoastGuard extends Problem {
     }
 
     // TODO
-    public int pathCost(State state) {
-        return 0;
+    public double pathCost(State state) {
+        CoastGuardState coastGuardState = (CoastGuardState) state;
+        return coastGuardState.getPassengersDeathCount()
+                + (1.0 * coastGuardState.getDamagedBoxesCount()
+                / (1.0 * (coastGuardState.getDamagedBoxesCount() + coastGuardState.getPassengersDeathCount())));
     }
 
     public CoastGuardState getInitialState() {
