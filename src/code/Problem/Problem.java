@@ -10,7 +10,7 @@ public abstract class Problem {
         this.operators = operators;
     }
 
-    public abstract int pathCost(State state);
+    public abstract double pathCost(State state);
 
     public abstract boolean isGoalState(State state);
 
