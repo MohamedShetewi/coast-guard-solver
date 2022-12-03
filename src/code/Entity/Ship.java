@@ -29,6 +29,9 @@ public class Ship {
     public boolean isBlackBoxRetrievable() {
         return isWreck() && !isBlackBoxRetrieved && blackBoxDamage < 20;
     }
+    public boolean isBlackBoxDamaged() {
+        return blackBoxDamage >= 20;
+    }
 
     public Location getLocation() {
         return location;

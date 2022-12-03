@@ -21,7 +21,7 @@ public class Drop extends Operator {
             }
         }
 
-        newState.updateDeathInState();
+        newState.updateDeathAndDamageInState();
 
         return newState;
     }
