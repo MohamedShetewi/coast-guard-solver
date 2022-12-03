@@ -14,6 +14,7 @@ public class CoastGuardState implements State {
     private CoastGuardBoat coastGuardBoat;
     private int savedPassengersCount;
     private int passengersDeathCount;
+    private int damagedBoxesCount;
     private int gridWidth;
     private int gridHeight;
 
@@ -60,9 +61,13 @@ public class CoastGuardState implements State {
         return coastGuardBoat;
     }
 
-    public void updateDeathInState(){
+    public int getDamagedBoxesCount() {
+        return damagedBoxesCount;
+    }
+
+    public void updateDeathAndDamageInState(){
         ArrayList<Ship> shipList = this.getShipList();
-        int deathCount = 0;
+        int deathCount = 0, damagedCount = 0;
 
         //updates the number of passengers on all ships after performing an action
         for (Ship ship : shipList) {
@@ -71,10 +76,13 @@ public class CoastGuardState implements State {
                 deathCount++;
             } else if (ship.isBlackBoxRetrievable())
                 ship.setBlackBoxDamage(ship.getBlackBoxDamage() + 1);
+            if (ship.isBlackBoxDamaged())
+                damagedCount++;
         }
 
         //updates the count of deaths until this state
         this.passengersDeathCount += deathCount;
+        this.damagedBoxesCount = damagedCount;
     }
 
     @Override

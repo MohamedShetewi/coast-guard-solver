@@ -21,7 +21,7 @@ public class Pickup extends Operator {
                 ship.setPassengersCount(ship.getPassengersCount() - mostPossibleCount);
                 newCoastGuardBoat.setCurrentCapacity(newCoastGuardBoat.getCurrentCapacity() + mostPossibleCount);
                 newState.setSavedPassengersCount(newState.getSavedPassengersCount() + mostPossibleCount);
-                newState.updateDeathInState();
+                newState.updateDeathAndDamageInState();
                 break;
             }
         }
