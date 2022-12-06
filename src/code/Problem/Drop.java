@@ -14,8 +14,8 @@ public class Drop extends Operator {
         coastGuardBoat.setCurrentCapacity(0);
 
         ArrayList<Station> stationList = newState.getStationList();
-        for (Station station : stationList){
-            if(station.getLocation().equals(coastGuardBoat.getLocation())) {
+        for (Station station : stationList) {
+            if (station.getLocation().equals(coastGuardBoat.getLocation())) {
                 station.setPassengersCount(station.getPassengersCount() + coastGuardBoat.getCurrentCapacity());
                 break;
             }
@@ -40,4 +40,8 @@ public class Drop extends Operator {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "DROP";
+    }
 }
