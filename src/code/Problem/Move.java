@@ -65,4 +65,11 @@ public class Move extends Operator {
                 return true;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Move{" +
+                "direction=" + direction +
+                '}';
+    }
 }
