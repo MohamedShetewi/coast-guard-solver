@@ -3,14 +3,14 @@ package code.Search;
 import code.Problem.Node;
 import code.Problem.Problem;
 
-public class IterativeDeepening extends DFS{
+public class IterativeDeepening extends DFS {
     @Override
-    public Node search(Problem p) {
+    public Node search(Problem p) throws CloneNotSupportedException {
         int depth = 0;
         Node ans;
         while (true) {
             ans = super.search(p, depth);
-            if (p.isGoalState(ans.getState()))
+            if (ans != null && p.isGoalState(ans.getState()))
                 break;
             depth++;
         }

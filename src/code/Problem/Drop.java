@@ -11,7 +11,6 @@ public class Drop extends Operator {
         CoastGuardState oldState = (CoastGuardState) state;
         CoastGuardState newState = (CoastGuardState) oldState.clone();
         CoastGuardBoat coastGuardBoat = newState.getCoastGuardBoat();
-        coastGuardBoat.setCurrentCapacity(0);
 
         ArrayList<Station> stationList = newState.getStationList();
         for (Station station : stationList) {
@@ -21,6 +20,7 @@ public class Drop extends Operator {
             }
         }
 
+        coastGuardBoat.setCurrentCapacity(0);
         newState.updateDeathAndDamageInState();
 
         return newState;
@@ -34,7 +34,8 @@ public class Drop extends Operator {
         ArrayList<Station> stationList = oldState.getStationList();
 
         for (Station station : stationList)
-            if (station.getLocation().equals(coastGuardBoat.getLocation()))
+            if (station.getLocation().equals(coastGuardBoat.getLocation())
+                    && coastGuardBoat.getCurrentCapacity() > 0)
                 return true;
 
         return false;
@@ -42,6 +43,6 @@ public class Drop extends Operator {
 
     @Override
     public String toString() {
-        return "DROP";
+        return "drop";
     }
 }

@@ -28,7 +28,7 @@ public class CoastGuardParser {
         ArrayList<Station> stations = parseStations(tokens[3]);
         ArrayList<Ship> ships = parseShips(tokens[4]);
 
-        return new CoastGuardState(ships, stations, boat, gridDimensions[0], gridDimensions[1]);
+        return new CoastGuardState(ships, stations, boat,0, 0, gridDimensions[0], gridDimensions[1]);
     }
 
     private int[] parseDimensions(String dimensionsEncoding) {

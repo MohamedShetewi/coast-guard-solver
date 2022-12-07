@@ -39,6 +39,6 @@ public class Retrieve extends Operator {
 
     @Override
     public String toString() {
-        return "RETRIEVE";
+        return "retrieve";
     }
 }
