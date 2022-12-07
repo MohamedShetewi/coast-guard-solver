@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Visualizer {
 
-    private final int cellWidth = 8;
+    private static final int cellWidth = 8;
 
     /**
      * @param node
@@ -32,7 +32,7 @@ public class Visualizer {
      * SH1 --> Passenger Count: 73, Box Damage: 1
      * ....
      */
-    public String visualize(Node node) {
+    public static String visualize(Node node) {
         int width = ((CoastGuardState) node.getState()).getGridWidth();
         int height = ((CoastGuardState) node.getState()).getGridHeight();
 
@@ -50,7 +50,7 @@ public class Visualizer {
         return grid.append("\n").append(getStateInfo(node)).toString();
     }
 
-    private String getStateInfo(Node node) {
+    private static String getStateInfo(Node node) {
         ArrayList<Ship> ships = ((CoastGuardState) node.getState()).getShipList();
         ArrayList<Station> stations = ((CoastGuardState) node.getState()).getStationList();
         CoastGuardBoat coastGuardBoat = ((CoastGuardState) node.getState()).getCoastGuardBoat();
@@ -75,11 +75,11 @@ public class Visualizer {
         return stateInfo.toString();
     }
 
-    private String getRowSeparator(int width) {
+    private static String getRowSeparator(int width) {
         return repeatString("-", width * (cellWidth + 1) + 1);
     }
 
-    private String getCellInIndex(Location location, Node node) {
+    private static String getCellInIndex(Location location, Node node) {
         ArrayList<Ship> ships = ((CoastGuardState) node.getState()).getShipList();
         ArrayList<Station> stations = ((CoastGuardState) node.getState()).getStationList();
         CoastGuardBoat coastGuardBoat = ((CoastGuardState) node.getState()).getCoastGuardBoat();
@@ -105,7 +105,7 @@ public class Visualizer {
         return cellFormatter(cellContent);
     }
 
-    private String cellFormatter(String cellContent) {
+    private static String cellFormatter(String cellContent) {
         int spaceCount = cellWidth - cellContent.length();
         int prefixCount = spaceCount - spaceCount / 2;
         int suffixCount = spaceCount - prefixCount;
@@ -117,7 +117,7 @@ public class Visualizer {
         return cellFormatted + "|";
     }
 
-    private String repeatString(String s, int n) {
+    private static String repeatString(String s, int n) {
         StringBuilder res = new StringBuilder();
         while (n-- > 0)
             res.append(s);
