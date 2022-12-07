@@ -58,4 +58,13 @@ public class CoastGuardBoat {
     public Object clone() throws CloneNotSupportedException {
         return new CoastGuardBoat((Location) this.location.clone(), this.maxPassengersCapacity, this.currentCapacity);
     }
+
+    @Override
+    public String toString() {
+        return "CoastGuardBoat{" +
+                "location=" + location +
+                ", maxPassengersCapacity=" + maxPassengersCapacity +
+                ", currentCapacity=" + currentCapacity +
+                '}';
+    }
 }

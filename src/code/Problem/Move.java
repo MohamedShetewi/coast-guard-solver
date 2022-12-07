@@ -68,8 +68,15 @@ public class Move extends Operator {
 
     @Override
     public String toString() {
-        return "Move{" +
-                "direction=" + direction +
-                '}';
+        switch (direction) {
+            case UP:
+                return "up";
+            case RIGHT:
+                return "right";
+            case DOWN:
+                return "down";
+            default:
+                return "left";
+        }
     }
 }

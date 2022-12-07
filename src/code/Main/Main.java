@@ -2,6 +2,8 @@ package code.Main;
 
 import code.Problem.*;
 
+import java.util.Stack;
+
 public class Main {
     public static String GenGrid() {
         return (new GridGenerator()).toString();

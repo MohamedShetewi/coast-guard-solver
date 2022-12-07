@@ -2,15 +2,20 @@ package code.Problem;
 
 public abstract class Problem {
 
-    public State initialState;
-    public Operator[] operators;
+    private State initialState;
+
+
+    private Operator[] operators;
 
     public Problem(State initialState, Operator[] operators) {
         this.initialState = initialState;
         this.operators = operators;
     }
+    public State getInitialState() {
+        return initialState;
+    }
 
-    public abstract double pathCost(State state);
+    public abstract int pathCost(State state);
 
     public abstract boolean isGoalState(State state);
 
