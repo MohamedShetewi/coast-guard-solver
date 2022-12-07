@@ -16,8 +16,8 @@ public class Move extends Operator {
         CoastGuardState newState = (CoastGuardState) oldState.clone();
         CoastGuardBoat coastGuardBoat = newState.getCoastGuardBoat();
 
-        int xLocation = coastGuardBoat.getLocation().getX();
-        int yLocation = coastGuardBoat.getLocation().getY();
+        int xLocation = coastGuardBoat.getLocation().getI();
+        int yLocation = coastGuardBoat.getLocation().getJ();
 
         switch (direction) {
             case UP:
@@ -49,8 +49,8 @@ public class Move extends Operator {
         int gridHeight = oldState.getGridHeight();
         int gridWidth = oldState.getGridWidth();
 
-        int xLocation = coastGuardBoat.getLocation().getX();
-        int yLocation = coastGuardBoat.getLocation().getY();
+        int xLocation = coastGuardBoat.getLocation().getI();
+        int yLocation = coastGuardBoat.getLocation().getJ();
 
         switch (direction) {
             case UP:
@@ -64,5 +64,12 @@ public class Move extends Operator {
             default:
                 return true;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Move{" +
+                "direction=" + direction +
+                '}';
     }
 }

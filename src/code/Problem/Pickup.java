@@ -44,4 +44,9 @@ public class Pickup extends Operator {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "PICK UP";
+    }
 }

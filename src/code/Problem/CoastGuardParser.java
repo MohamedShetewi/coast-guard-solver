@@ -44,9 +44,9 @@ public class CoastGuardParser {
 
     private Location parseBoatInitialPos(String boatInitialPosEncoding) {
         String[] positionTokens = boatInitialPosEncoding.split(",");
-        int x = Integer.parseInt(positionTokens[0]);
-        int y = Integer.parseInt(positionTokens[1]);
-        return new Location(x, y);
+        int i = Integer.parseInt(positionTokens[0]);
+        int j = Integer.parseInt(positionTokens[1]);
+        return new Location(i, j);
     }
 
     /**

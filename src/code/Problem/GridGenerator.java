@@ -14,13 +14,24 @@ public class GridGenerator {
     private List<Location> stationsPositions, shipsPositions;
     private List<Integer> passengerCountInShips;
 
+
+    public GridGenerator(int gridWidth, int gridHeight) {
+        this.gridWidth = gridWidth;
+        this.gridHeight = gridHeight;
+        generateGrid();
+    }
+
     public GridGenerator() {
         this.gridWidth = getRandomInt(5, 15);
         this.gridHeight = getRandomInt(5, 15);
+        generateGrid();
+    }
+
+    private void generateGrid() {
         this.boatCapacity = getRandomInt(30, 100);
 
-        int boatX = getRandomInt(0, this.gridHeight);
-        int boatY = getRandomInt(0, this.gridWidth);
+        int boatX = getRandomInt(0, this.gridHeight - 1);
+        int boatY = getRandomInt(0, this.gridWidth - 1);
         this.boatInitPos = new Location(boatX, boatY);
 
         shipsPositions = new ArrayList<>();
@@ -31,13 +42,12 @@ public class GridGenerator {
         this.generateStations();
     }
 
-
     private void generateShips() {
         int maxShipsCount = this.gridWidth * this.gridHeight - 2; // we minus 2 because we want 1 boat and min 1 station
         int shipsCount = getRandomInt(1, maxShipsCount);
 
         while (shipsCount > 0) {
-            Location newShipPos = new Location(getRandomInt(0, this.gridHeight), getRandomInt(0, this.gridWidth));
+            Location newShipPos = new Location(getRandomInt(0, this.gridHeight - 1), getRandomInt(0, this.gridWidth - 1));
             if (isPositionTaken(newShipPos))
                 continue;
             this.shipsPositions.add(newShipPos);
@@ -52,7 +62,7 @@ public class GridGenerator {
         int stationsCount = getRandomInt(1, maxStationsCount);
 
         while (stationsCount > 0) {
-            Location newStationPos = new Location(getRandomInt(0, this.gridHeight), getRandomInt(0, this.gridWidth));
+            Location newStationPos = new Location(getRandomInt(0, this.gridHeight-1), getRandomInt(0, this.gridWidth-1));
 
             if (isPositionTaken(newStationPos))
                 continue;
