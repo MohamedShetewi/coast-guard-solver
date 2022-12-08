@@ -1,6 +1,7 @@
 package code.Main;
 
 import code.Problem.*;
+
 public class Main {
     public static String GenGrid() {
         return (new GridGenerator()).toString();

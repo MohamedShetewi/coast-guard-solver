@@ -72,8 +72,7 @@ public class Ship {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ship ship = (Ship) o;
-        return passengersCount == ship.passengersCount && blackBoxDamage == ship.blackBoxDamage
-                && isBlackBoxRetrieved == ship.isBlackBoxRetrieved && location.equals(ship.location);
+        return passengersCount == ship.passengersCount && blackBoxDamage == ship.blackBoxDamage && isBlackBoxRetrieved == ship.isBlackBoxRetrieved && location.equals(ship.location);
     }
 
     @Override
