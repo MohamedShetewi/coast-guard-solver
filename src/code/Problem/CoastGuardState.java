@@ -21,7 +21,8 @@ public class CoastGuardState implements State {
 
     public CoastGuardState(ArrayList<Ship> shipList, ArrayList<Station> stationList,
                            CoastGuardBoat coastGuardBoat, int savedPassengersCount,
-                           int passengersDeathCount, int gridWidth, int gridHeight) {
+                           int passengersDeathCount, int damagedBoxesCount,
+                           int gridWidth, int gridHeight) {
         this.shipList = shipList;
         this.stationList = stationList;
         this.coastGuardBoat = coastGuardBoat;
@@ -29,6 +30,7 @@ public class CoastGuardState implements State {
         this.gridHeight = gridHeight;
         this.savedPassengersCount = savedPassengersCount;
         this.passengersDeathCount = passengersDeathCount;
+        this.damagedBoxesCount = damagedBoxesCount;
     }
 
 
@@ -70,7 +72,7 @@ public class CoastGuardState implements State {
 
     public void updateDeathAndDamageInState() {
         ArrayList<Ship> shipList = this.getShipList();
-        int deathCount = 0, damagedCount = 0;
+        int deathCount = 0;
 
         //updates the number of passengers on all ships after performing an action
         for (Ship ship : shipList) {
@@ -81,12 +83,11 @@ public class CoastGuardState implements State {
             if (ship.isBlackBoxRetrievable())
                 ship.setBlackBoxDamage(ship.getBlackBoxDamage() + 1);
             if (ship.isBlackBoxDamaged())
-                damagedCount++;
+                damagedBoxesCount++;
         }
 
         //updates the count of deaths until this state
         this.passengersDeathCount += deathCount;
-        this.damagedBoxesCount = damagedCount;
     }
 
     @Override
@@ -95,14 +96,18 @@ public class CoastGuardState implements State {
         ArrayList<Station> newStationList = new ArrayList<>();
         CoastGuardBoat newCoastGuardBoat = (CoastGuardBoat) this.coastGuardBoat.clone();
 
-        for (Ship ship : this.shipList)
+        for (Ship ship : this.shipList) {
+            if (ship.isBlackBoxRetrieved() || ship.isBlackBoxDamaged()) {
+                continue;
+            }
             newShipList.add((Ship) ship.clone());
+        }
 
         for (Station station : this.stationList)
             newStationList.add((Station) station.clone());
 
         return new CoastGuardState(newShipList, newStationList, newCoastGuardBoat, this.savedPassengersCount,
-                this.passengersDeathCount, this.gridWidth, this.gridHeight);
+                this.passengersDeathCount, this.damagedBoxesCount, this.gridWidth, this.gridHeight);
     }
 
     @Override
@@ -110,11 +115,11 @@ public class CoastGuardState implements State {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CoastGuardState that = (CoastGuardState) o;
-        return passengersDeathCount == that.passengersDeathCount && shipList.equals(that.shipList) && coastGuardBoat.equals(that.coastGuardBoat);
+        return passengersDeathCount == that.passengersDeathCount && damagedBoxesCount == that.damagedBoxesCount && shipList.equals(that.shipList) && coastGuardBoat.equals(that.coastGuardBoat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shipList, coastGuardBoat, passengersDeathCount);
+        return Objects.hash(shipList, coastGuardBoat, passengersDeathCount, damagedBoxesCount);
     }
 }
