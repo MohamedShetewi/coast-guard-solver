@@ -57,20 +57,33 @@ public class CoastGuard extends Problem {
         Node result = search.search(coastGuard);
         if (result == null)
             return "NO SOLUTION FOUND!";
+        String ans = encodeAnswer(result, initialState.getShipList().size(), search.getExpandedNodes(), visualize);
+        return ans;
+    }
+
+    private static String encodeAnswer(Node result, int noOfShips, int expandedNodes, boolean visualize) {
         Stack<Operator> plan = new Stack<>();
+        Stack<String> visualization = new Stack<>();
         Node cur = result;
         while (cur.getGeneratingOperator() != null) {
             plan.push(cur.getGeneratingOperator());
+            visualization.push(Visualizer.visualize(cur));
             cur = cur.getParentNode();
         }
+        visualization.push(Visualizer.visualize(cur));
         StringBuilder planString = new StringBuilder();
         while (!plan.isEmpty()) {
             planString.append(plan.pop()).append(",");
         }
+        if (visualize) {
+            while (!visualization.isEmpty()) {
+                System.out.println(visualization.pop());
+            }
+        }
         planString.deleteCharAt(planString.length() - 1);
         int deaths = ((CoastGuardState) result.getState()).getPassengersDeathCount();
-        int retrieved = initialState.getShipList().size() - ((CoastGuardState) result.getState()).getDamagedBoxesCount();
-        String ans = planString + ";" + deaths + ";" + retrieved + ";" + search.getExpandedNodes();
+        int retrieved = noOfShips - ((CoastGuardState) result.getState()).getDamagedBoxesCount();
+        String ans = planString + ";" + deaths + ";" + retrieved + ";" + expandedNodes;
         return ans;
     }
 

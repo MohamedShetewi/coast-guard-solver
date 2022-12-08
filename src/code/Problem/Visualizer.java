@@ -15,9 +15,9 @@ public class Visualizer {
      * @param node
      * @return the explicit grid with the positions of boats (<>), ships (SHi) and stations (STi)
      * the info of each element is printed.
-     *
+     * <p>
      * output example:
-     *
+     * <p>
      * ----------------------------------------------
      * |   ST0  |   <>   |   SH8  |   SH4  |  SH10  |
      * ----------------------------------------------
@@ -25,7 +25,7 @@ public class Visualizer {
      * ----------------------------------------------
      * |   SH7  |   SH3  |   SH2  |  SH11  |   SH0  |
      * ----------------------------------------------
-     *
+     * <p>
      * Action           --> DROP
      * Coast Guard Boat --> Current Capacity: 0
      * SH0 --> Passenger Count: 5, Box Damage: 1
@@ -58,7 +58,9 @@ public class Visualizer {
         StringBuilder stateInfo = new StringBuilder();
         if (node.getGeneratingOperator() != null)
             stateInfo.append("Action           --> ").append(node.getGeneratingOperator().toString()).append("\n");
-        stateInfo.append("Coast Guard Boat --> ").append("Current Capacity: ").append(coastGuardBoat.getCurrentCapacity()).append("\n");
+        stateInfo.append("Coast Guard Boat --> ").append("Current Capacity: ")
+                .append(coastGuardBoat.getCurrentCapacity()).append('/')
+                .append(coastGuardBoat.getMaxPassengersCapacity()).append("\n");
 
         for (int i = 0; i < ships.size(); i++) {
             Ship ship = ships.get(i);
