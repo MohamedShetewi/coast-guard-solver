@@ -11,7 +11,7 @@ public class Ship {
     public Ship(Location location, int passengersCount) {
         this.location = location;
         this.passengersCount = passengersCount;
-        this.blackBoxDamage = 1;
+        this.blackBoxDamage = 0;
         this.isBlackBoxRetrieved = false;
     }
 
@@ -27,7 +27,7 @@ public class Ship {
     }
 
     public boolean isBlackBoxRetrievable() {
-        return isWreck() && !isBlackBoxRetrieved && blackBoxDamage < 20;
+        return isWreck() && !isBlackBoxRetrieved && !isBlackBoxDamaged();
     }
     public boolean isBlackBoxDamaged() {
         return blackBoxDamage >= 20;

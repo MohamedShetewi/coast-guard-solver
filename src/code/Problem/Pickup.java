@@ -33,13 +33,13 @@ public class Pickup extends Operator {
         CoastGuardState oldState = (CoastGuardState) state;
         CoastGuardBoat coastGuardBoat = oldState.getCoastGuardBoat();
 
-        if (coastGuardBoat.getCurrentCapacity() == 0)
+        if (!coastGuardBoat.hasCapacity())
             return false;
 
         ArrayList<Ship> shipList = oldState.getShipList();
 
         for (Ship ship : shipList)
-            if (ship.getLocation().equals(coastGuardBoat.getLocation()) && !ship.isWreck() && coastGuardBoat.hasCapacity())
+            if (ship.getLocation().equals(coastGuardBoat.getLocation()) && !ship.isWreck())
                 return true;
 
         return false;
@@ -47,6 +47,6 @@ public class Pickup extends Operator {
 
     @Override
     public String toString() {
-        return "PICK UP";
+        return "pickup";
     }
 }

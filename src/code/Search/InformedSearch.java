@@ -35,6 +35,7 @@ public abstract class InformedSearch extends Search{
 
     Heuristic[] heuristics;
 
-//    public abstract int heuristic1(State s);
-//    public abstract int heuristic2(State s);
+    public InformedSearch() {
+        heuristics = new Heuristic[] {new Heuristic1(), new Heuristic2()};
+    }
 }
