@@ -4,7 +4,6 @@ import com.sun.management.OperatingSystemMXBean;
 
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
