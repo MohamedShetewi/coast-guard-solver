@@ -1,6 +1,5 @@
 package code.Analyzer;
 
-import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;

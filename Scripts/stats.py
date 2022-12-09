@@ -1,6 +1,5 @@
 from os import listdir
 import matplotlib.pyplot as plt
-import numpy as np
 
 strategy_abbrev = {"DF": "DFS", "BF": "BFS", "ID": "Iterative Deepening",
                    "AS2": "A Star 2", "AS1": "A Star 1", "GR1": "Greedy 1", "GR2": "Greedy 2"}

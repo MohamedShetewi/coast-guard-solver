@@ -1,8 +1,6 @@
 package code.Search;
 
 import code.Analyzer.Analysis;
-import code.Analyzer.Analyzer;
-import code.Main.Main;
 import code.Problem.*;
 
 import java.util.*;
