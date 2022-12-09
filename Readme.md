@@ -64,7 +64,7 @@ The method `search` returns a search tree node which is traversed backwards usin
 
 ## Path cost and heuristics
 
-### Path cost**********************:**********************
+### Path cost:
 
 $$
 \begin{align}
