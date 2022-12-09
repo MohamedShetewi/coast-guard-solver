@@ -1,12 +1,15 @@
 package code.Analyzer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.logging.SimpleFormatter;
+import java.lang.management.ManagementFactory;
 
 import code.Problem.CoastGuard;
-
+import com.sun.management.OperatingSystemMXBean;
 
 
 public class Analyzer {
