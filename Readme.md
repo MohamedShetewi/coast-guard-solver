@@ -137,13 +137,13 @@ The test was conducted on the following string: `7,5;100;3,4;2,6,3,5;0,0,4,0,1,8
 
 ---
 
-![grid.png](AI%20Project%201%20Report%20e88a340f8922497c9e1456ba7defbbeb/grid.png)
+![grid.png](Charts/grid.png)
 
 ## Testing Results
 
 ### Expanded Nodes
 
-![ExpandedNodes.png](AI%20Project%201%20Report%20e88a340f8922497c9e1456ba7defbbeb/ExpandedNodes.png)
+![ExpandedNodes.png](Charts/ExpandedNodes.png)
 
 As shown in the graph, the BFS is overcoming the rest of the strategies. This can be explained due to the fact that this search strategy expands every level before start exploring the next level. However, the DFS has the least number of expanded nodes. In this particular problem the goal state can be achieved as time passes. Consequently, the DFS can expand deep states and achieve its goal easily without having to backtrack to other branches. But this strategy can easily sacrifice the number of rescued people.
 
@@ -151,7 +151,7 @@ Since $A*_2$ dominates $A*_2$ , $A*_1$  expands less number of nodes compared to
 
 ### Memory
 
-![Memory.png](AI%20Project%201%20Report%20e88a340f8922497c9e1456ba7defbbeb/Memory.png)
+![Memory.png](Charts/Memory.png)
 
 Java ****************Runtime**************** library provides an approximation for the measuring the memory usage of a Java process. Two methods were provided to measure the memory usage:  `Runtime.*getRuntime*().freeMemory();` and `Runtime.*getRuntime*().totalMemory();`. Used memory can be calculated by subtracting $totalMemory - freeMemory$. 
 
@@ -159,7 +159,7 @@ As a consequence of exploring huge the number of nodes, the ********BFS******** 
 
 ### Execution Time
 
-![Time.png](AI%20Project%201%20Report%20e88a340f8922497c9e1456ba7defbbeb/Time.png)
+![Time.png](Charts/Time.png)
 
 Java runtime provides an API to get the current runtime. This was calculated by computing the time before and after the search.
 
@@ -167,7 +167,7 @@ Since the **************BFS************** expanding a huge number of nodes durin
 
 ### CPU Utilization
 
-![CPU.png](AI%20Project%201%20Report%20e88a340f8922497c9e1456ba7defbbeb/CPU.png)
+![CPU.png](Charts/CPU.png)
 
 The`java.lang.management.ManagementFactory` provides a function to measure the utilization of the running Java process. Since the utilization of the CPU is varying as time passes, the overall utilization was calculated by calculating the average of utilizations that were measured after expanding 10000 nodes. This is number is relatively high to decrease the number of measurements, this is because measuring the utilization is an expensive task.
 
