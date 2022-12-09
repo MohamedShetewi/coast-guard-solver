@@ -1,8 +1,7 @@
 package code.Search;
 
-import code.Analyzer.Analysis;
-import code.Analyzer.Analyzer;
-import code.Main.Main;
+import code.Entity.CoastGuardBoat;
+import code.Entity.Location;
 import code.Problem.*;
 
 import java.util.*;
@@ -17,10 +16,6 @@ public abstract class Search {
         HashSet<State> visited = new HashSet<>();
         searchQueue.enqueue(initialNode);
         visited.add(initialNode.getState());
-
-        if (Analysis.isAnalysisEnabled)
-            Analysis.cpuAnalyzer.calcCurrentCpuUtil();
-
         while (!searchQueue.isEmpty()) {
             Node node = searchQueue.dequeue();
             expandedNodes++;
@@ -35,8 +30,6 @@ public abstract class Search {
                     }
                 }
             }
-            if (expandedNodes % Analysis.cpuCalcFreq == 0 && Analysis.isAnalysisEnabled)
-                Analysis.cpuAnalyzer.calcCurrentCpuUtil();
         }
         return null;
     }
@@ -47,8 +40,6 @@ public abstract class Search {
         HashSet<State> visited = new HashSet<>();
         searchQueue.enqueue(initialNode);
         visited.add(initialNode.getState());
-        if (Analysis.isAnalysisEnabled)
-            Analysis.cpuAnalyzer.calcCurrentCpuUtil();
         while (!searchQueue.isEmpty()) {
             Node node = searchQueue.dequeue();
             expandedNodes++;
@@ -65,9 +56,6 @@ public abstract class Search {
                     }
                 }
             }
-
-            if (expandedNodes % Analysis.cpuCalcFreq == 0 && Analysis.isAnalysisEnabled)
-                Analysis.cpuAnalyzer.calcCurrentCpuUtil();
         }
         return null;
     }
